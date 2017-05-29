@@ -44,12 +44,22 @@
         var totalYears = inventors.reduce(function(total, inventor){
           return total + (inventor.passed - inventor.year);
         }, 0)
-        console.log(totalYears)
+        //console.log(totalYears)
     // 5. Sort the inventors by years lived
-
+        var oldest = inventors.sort(function(a,b){
+          var lastGuy = a.passed - a.year;
+          var nextGuy = b.passed - b.year;
+          return lastGuy > nextGuy ? -1 : 1;
+        })
+        console.table(oldest);
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+       var category = document.querySelector('.mw-category');
+       var links = Array.from(category. querySelectorAll('a'));
 
+       var  de = links
+                .map(link => link.textContent)
+                .filter(streetName => streetName.includes('de'));
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
